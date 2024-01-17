@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/822.2dd543c5.chunk.js","mappings":"0JAMA,UANgB,WACZ,OACIA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,WAEb,C","sources":["pages/Catalog/Catalog.jsx"],"sourcesContent":["const Catalog = () => {\n    return (\n        <div>Catalog</div>\n    )\n}\n\nexport default Catalog;"],"names":["_jsx","children"],"sourceRoot":""}
