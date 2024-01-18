@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdverts } from '../../redux/adverts/operations';
 import { selectVisibleItems } from '../../redux/selectors';
-import { Container, Img, Item, List } from './Adverts.styled';
+import { Container, Heart, HeartBtn, Img, Item, List } from './Adverts.styled';
 
 export const Adverts = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,9 @@ export const Adverts = () => {
               {advert.model}
               {advert.id}
             </div>
+            <HeartBtn>
+              <Heart />
+            </HeartBtn>
           </Item>
         ))}
       </List>
