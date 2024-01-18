@@ -1,10 +1,10 @@
 import { Adverts } from 'components/Adverts/Adverts';
-import { Filter } from 'components/Filter/Filter';
+import { Filters } from 'components/Filters/Filters';
 
 const Catalog = () => {
   return (
     <div>
-      <Filter />
+      <Filters />
       <Adverts />
     </div>
   );
