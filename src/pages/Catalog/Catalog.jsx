@@ -15,13 +15,17 @@ const Catalog = () => {
     <div>
       <ul>
         {adverts.map(advert => (
-            <li key={advert.id}>
+          <li key={advert.id}>
             <div>
-                {advert.img}
-                {advert.make}
+              <img src={advert.img} alt="car" />
+              </div>
+            <div>
+              {advert.make}
               {advert.model}
-                {advert.year}
+              {advert.year}
               {advert.rentalPrice}
+            </div>
+            <div>
               {advert.address}
               {advert.rentalCompany}
               {advert.type}
@@ -29,10 +33,16 @@ const Catalog = () => {
               {advert.id}
             </div>
           </li>
-            ))}
+        ))}
       </ul>
     </div>
   );
 };
 
 export default Catalog;
+
+
+// <img
+//                 src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+//                 alt="Poster"
+//               />
