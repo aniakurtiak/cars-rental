@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAdverts } from '../../redux/operations';
-import { selectAdverts } from '../../redux/selectors';
+import { fetchAdverts } from '../../redux/adverts/operations';
+import { selectVisibleItems } from '../../redux/selectors';
 import { Container, Img, Item, List } from './Adverts.styled';
 
 export const Adverts = () => {
   const dispatch = useDispatch();
-  const adverts = useSelector(selectAdverts);
+  const adverts = useSelector(selectVisibleItems);
 
   useEffect(() => {
     dispatch(fetchAdverts());
