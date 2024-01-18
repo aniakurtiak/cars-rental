@@ -1,46 +1,50 @@
-import { useDispatch, useSelector } from "react-redux";
-import {setSelectedOption } from "../../redux/filters/filtersSlice";
-import {selectSelectedOption } from "../../redux/selectors";
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedOption } from '../../redux/filters/filtersSlice';
+import { selectSelectedOption } from '../../redux/selectors';
+import Select from 'react-select';
+
+const options = [
+  { value: 'buick', label: 'Buick' },
+  { value: 'volvo', label: 'Volvo' },
+  { value: 'hummer', label: 'HUMMER' },
+  { value: 'subaru', label: 'Subaru' },
+  { value: 'mitsubishi', label: 'Mitsubishi' },
+  { value: 'nissan', label: 'Nissan' },
+  { value: 'lincoln', label: 'Lincoln' },
+  { value: 'gmc', label: 'GMC' },
+  { value: 'hyundai', label: 'Hyundai' },
+  { value: 'mini', label: 'MINI' },
+  { value: 'bentley', label: 'Bentley' },
+  { value: 'mercedes-Benz', label: 'Mercedes-Benz' },
+  { value: 'aston Martin', label: 'Aston Martin' },
+  { value: 'pontiac', label: 'Pontiac' },
+  { value: 'lamborghini', label: 'Lamborghini' },
+  { value: 'audi', label: 'Audi' },
+  { value: 'bmw', label: 'BMW' },
+  { value: 'chevrolet', label: 'Chevrolet' },
+  { value: 'chrysler', label: 'Chrysler' },
+  { value: 'kia', label: 'Kia' },
+  { value: 'land', label: 'Land' },
+];
 
 export const Filters = () => {
-    const dispatch = useDispatch();
-    const selectedOption = useSelector(selectSelectedOption);
-  
-    const handleOptionChange = (evt) => {
-        dispatch(setSelectedOption(evt.target.value));
-      };
+  const dispatch = useDispatch();
+  const selectedOption = useSelector(selectSelectedOption);
 
+  const handleOptionChange = selectedOption => {
+    dispatch(setSelectedOption(selectedOption.value));
+  };
 
-    return (
-        <div>
-        <label>Car brand</label>
-        <select value={selectedOption} onChange={handleOptionChange}>
-          <option value="" hidden>
-          Enter the text </option>
-          <option value="buick">Buick</option>
-          <option value="volvo">Volvo</option>
-          <option value="hummer">HUMMER</option>
-          <option value="subaru">Subaru</option>
-          <option value="mitsubishi">Mitsubishi</option>
-          <option value="nissan">Nissan</option>
-          <option value="lincoln">Lincoln</option>
-          <option value="gmc">GMC</option>
-          <option value="hyundai">Hyundai</option>
-          <option value="mini">MINI</option>
-          <option value="bentley">Bentley</option>
-          <option value="mercedes-Benz">Mercedes-Benz</option>
-          <option value="astonMartin">Aston Martin</option>
-          <option value="pontiac">Pontiac</option>
-          <option value="lamborghini">Lamborghini</option>
-          <option value="audi">Audi</option>
-          <option value="bmw">BMW</option>
-          <option value="chevrolet">Chevrolet</option>
-          <option value="chrysler">Chrysler</option>
-          <option value="kia">Kia</option>
-          <option value="land">Land</option>
-
-        </select>
-      </div>
-    )
-}
-
+  return (
+    <div>
+      <label>Car brand</label>
+      <Select
+        value={options.find(option => option.value === selectedOption)}
+        options={options}
+        onChange={handleOptionChange}
+        isSearchable
+        placeholder="Enter the text"
+      />
+    </div>
+  );
+};
