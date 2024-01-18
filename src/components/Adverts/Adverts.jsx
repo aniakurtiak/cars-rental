@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdverts } from '../../redux/operations';
 import { selectAdverts } from '../../redux/selectors';
+import { Container, Img, Item, List } from './Adverts.styled';
 
 export const Adverts = () => {
   const dispatch = useDispatch();
@@ -12,12 +13,12 @@ export const Adverts = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <ul>
+    <Container>
+      <List>
         {adverts.map(advert => (
-          <li key={advert.id}>
+          <Item key={advert.id}>
             <div>
-              <img src={advert.img} alt="car" />
+              <Img src={advert.img} alt="car" />
             </div>
             <div>
               {advert.make}
@@ -32,9 +33,9 @@ export const Adverts = () => {
               {advert.model}
               {advert.id}
             </div>
-          </li>
+          </Item>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 };

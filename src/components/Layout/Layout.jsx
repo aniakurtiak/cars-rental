@@ -1,10 +1,11 @@
 import { GlobalStyle } from 'components/GlobalStyle';
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { Container } from './Layout.styled';
 
 export const Layout = () => {
   return (
-    <div>
+    <Container>
       <header>
         <nav>
           <NavLink to="/">Home</NavLink>
@@ -16,6 +17,6 @@ export const Layout = () => {
         <Outlet />
       </Suspense>
       <GlobalStyle />
-    </div>
+    </Container>
   );
 };
