@@ -12,6 +12,8 @@ export const Adverts = () => {
     dispatch(fetchAdverts());
   }, [dispatch]);
 
+
+
   return (
     <div>
       <CarsList adverts={adverts}/>

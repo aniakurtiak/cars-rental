@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 axios.defaults.baseURL = 'https://65a6efd494c2c5762da61054.mockapi.io/api/';
 
 export const fetchAdverts = createAsyncThunk(
@@ -20,7 +21,7 @@ export const addFavorites = createAsyncThunk(
     async (advert, thunkAPI) => {
       try {
         const response = await axios.post('/favorites', advert);
-        return response.data;
+        return response.data; 
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }
@@ -38,3 +39,16 @@ export const addFavorites = createAsyncThunk(
         }
     }
 )
+
+export const deleteFavorites = createAsyncThunk(
+    'adverts/deleteFavorites',
+    async (advertId, thunkAPI) => {
+      try {
+       await axios.delete(`/favorites/${advertId}`);
+        return {advertId};
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  )
+
