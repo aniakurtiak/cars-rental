@@ -36,4 +36,10 @@ export const Heart = styled(FiHeart)`
   color: white;
   width: 18px;
   height: 18px;
+  transition: fill scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    fill: #3470FF;
+    scale: 1.1;
+  }
 `;
