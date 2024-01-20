@@ -16,6 +16,18 @@ export const fetchAdverts = createAsyncThunk(
     }
 )
 
+export const fetchAdvertbyId = createAsyncThunk(
+  "adverts/fetchAdvertbyId",
+  async (advertId, thunkAPI) => {
+      try {
+          const response = await axios.get(`/adverts/${advertId}`);
+          return response.data;
+      } catch (error) {
+          return thunkAPI.rejectWithValue(error.message);
+      }
+  }
+)
+
 export const addFavorites = createAsyncThunk(
     'adverts/addFavorites',
     async (advert, thunkAPI) => {

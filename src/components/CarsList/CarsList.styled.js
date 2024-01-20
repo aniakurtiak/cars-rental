@@ -73,3 +73,51 @@ export const HeartDel = styled(FiHeart)`
     
   }
 `;
+
+
+export const TitleContainer = styled.div`
+margin-top: 14px;
+margin-bottom: 8px;
+display: flex;
+justify-content: space-between;
+color: #121417;
+font-size: 16px;
+font-weight: 500;
+line-height: 1,5%;
+`
+
+export const MainInfo = styled.div`
+display: flex;
+`
+
+export const Price = styled.div`
+`
+
+export const Model = styled.span`
+color: #3470FF;
+white-space: pre;
+`
+
+export const Info = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+
+export const Btn = styled.button`
+margin-top: 28px;
+width: 100%;
+height: 44px;
+padding: 12px 99px;
+justify-content: center;
+align-items: center;
+border: none;
+border-radius: 12px;
+background: #3470FF;
+color: white;
+font-weight: 600;
+line-height: 1.43;
+cursor: pointer;
+&:hover{
+  background: #0B44CD;
+  }
+`

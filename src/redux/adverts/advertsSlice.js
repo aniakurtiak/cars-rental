@@ -1,5 +1,5 @@
 import {createSlice } from '@reduxjs/toolkit';
-import {addFavorites, deleteFavorites, fetchAdverts, fetchFavorites } from './operations';
+import {addFavorites, deleteFavorites, fetchAdvertbyId, fetchAdverts, fetchFavorites } from './operations';
 
 
 const handlePending = state => {
@@ -28,6 +28,16 @@ export const advertsSlice = createSlice({
       })
       .addCase(fetchAdverts.rejected, handleRejected)
 
+
+      .addCase(fetchAdvertbyId.pending, handlePending)
+      .addCase(fetchAdvertbyId.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchAdvertbyId.rejected, handleRejected)
+
+
       .addCase(addFavorites.pending, handlePending)
       .addCase(addFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -36,6 +46,7 @@ export const advertsSlice = createSlice({
       })
       .addCase(addFavorites.rejected, handleRejected)
 
+
       .addCase(fetchFavorites.pending, handlePending)
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -43,6 +54,7 @@ export const advertsSlice = createSlice({
         state.favororiteItems = action.payload;
       })
       .addCase(fetchFavorites.rejected, handleRejected)
+
 
       .addCase(deleteFavorites.pending, handlePending)
       .addCase(deleteFavorites.fulfilled, (state, action) => {
@@ -53,7 +65,6 @@ export const advertsSlice = createSlice({
         const index = state.favororiteItems.findIndex(
           advert => advert.id === advertId
         );
-      
         if (index !== -1) {
           state.favororiteItems.splice(index, 1);
         }
