@@ -17,6 +17,7 @@ export const advertsSlice = createSlice({
     favororiteItems: [],
     isLoading: false,
     error: null,
+    itemById: {},
   },
   extraReducers: builder => {
     builder
@@ -33,7 +34,7 @@ export const advertsSlice = createSlice({
       .addCase(fetchAdvertbyId.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.itemById = action.payload;
       })
       .addCase(fetchAdvertbyId.rejected, handleRejected)
 

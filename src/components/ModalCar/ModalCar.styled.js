@@ -13,8 +13,8 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   position: relative;
-  padding-left: 35px;
-  padding-right: 37px;
+  padding-left: 40px;
+  padding-right: 40px;
   width: 541px;
   height: 752px;
   border-radius: 10px;
@@ -26,7 +26,7 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 24px;
+  color: #121417;
 `;
 
 export const ButtonClose = styled.button`
@@ -54,3 +54,46 @@ export const ButtonCloseIcon = styled(IoCloseOutline)`
   height: 24px;
   display: block;
 `;
+
+export const GenInfo = styled.div`
+margin-bottom: 14px;
+color: rgba(18, 20, 23, 0.50);
+font-size: 12px;
+font-weight: 400;
+line-height: 1.5;
+
+` 
+
+export const Img = styled.img`
+width: 461px;
+height: 248px;
+border-radius: 14px;
+background: #F3F3F2;
+margin-bottom: 14px;
+`
+
+export const TitleInfo = styled.h2`
+margin-top: 0px;
+font-size: 18px;
+font-weight: 500;
+line-height: 1.33;
+margin-bottom: 8px;
+`
+export const Description = styled.p`
+font-size: 14px;
+line-height: 1.42;
+margin: 0px;
+`
+export const AccessoriesTitle = styled.h3`
+margin-top: 24px;
+margin-bottom: 4px;
+`
+export const List = styled.ul`
+display: flex;
+padding-left: 0px;
+margin-top: 4px;
+gap: 6px;
+color: rgba(18, 20, 23, 0.50);
+font-size: 12px;
+line-height: 1.5;
+`

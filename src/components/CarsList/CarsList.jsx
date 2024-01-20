@@ -27,7 +27,7 @@ export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
   useEffect(() => {
     const initialActiveButtons = {};
     adverts.forEach(advert => {
-      initialActiveButtons[advert.car_id] = favoriteMode
+      initialActiveButtons[advert.id] = favoriteMode
         ? 'favorite'
         : deleteMode
         ? 'delete'
@@ -40,7 +40,7 @@ export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
     dispatch(addFavorites(advert));
     setActiveButtons(prevState => ({
       ...prevState,
-      [advert.car_id]: 'delete',
+      [advert.id]: 'delete',
     }));
   };
 
@@ -48,7 +48,7 @@ export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
     dispatch(deleteFavorites(advert.id));
     setActiveButtons(prevState => ({
       ...prevState,
-      [advert.car_id]: 'favorite',
+      [advert.id]: 'favorite',
     }));
   };
 
@@ -66,7 +66,7 @@ export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
     <div>
       <List>
         {adverts.map(advert => (
-          <Item key={advert.car_id}>
+          <Item key={advert.id}>
             <div>
               <Img src={advert.img} alt="car" />
             </div>
@@ -83,14 +83,14 @@ export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
             {advert.rentalCompany}
             {advert.type}
             {advert.model}
-            {advert.car_id}
+            {advert.id}
             </Info>
-            {activeButtons[advert.car_id] === 'favorite' && (
+            {activeButtons[advert.id] === 'favorite' && (
               <HeartBtn onClick={() => handleFavoriteClick(advert)}>
                 <Heart />
               </HeartBtn>
             )}
-            {activeButtons[advert.car_id] === 'delete' && (
+            {activeButtons[advert.id] === 'delete' && (
               <HeartBtnDel onClick={() => handleDeleteFavorite(advert)}>
                 <HeartDel />
               </HeartBtnDel>

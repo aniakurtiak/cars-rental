@@ -6,6 +6,7 @@ import { Container } from './Layout.styled';
 export const Layout = () => {
   return (
     <Container>
+      <GlobalStyle />
       <header>
         <nav>
           <NavLink to="/">Home</NavLink>
@@ -16,7 +17,6 @@ export const Layout = () => {
       <Suspense>
         <Outlet />
       </Suspense>
-      <GlobalStyle />
     </Container>
   );
 };

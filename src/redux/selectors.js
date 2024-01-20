@@ -17,3 +17,5 @@ export const selectVisibleItems = createSelector(
             .includes(filters.toLowerCase())
   );
 })
+
+export const selectAdvertById = state => state.adverts.itemById;
