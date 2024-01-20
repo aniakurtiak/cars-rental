@@ -31,15 +31,45 @@ position: absolute;
   background-color: transparent;
 `;
 
+export const HeartBtnDel = styled.button`
+position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+`;
+
+
 export const Heart = styled(FiHeart)`
   fill: none;
   color: white;
   width: 18px;
   height: 18px;
   transition: fill scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
+  &:hover {
+    scale: 1.1;
+  }
   &:focus {
     fill: #3470FF;
+    color: #3470FF;
+   
+  }
+`;
+
+export const HeartDel = styled(FiHeart)`
+  fill: #3470FF;
+  color: #3470FF;
+  width: 18px;
+  height: 18px;
+  transition: fill scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover{
     scale: 1.1;
+  }
+  &:focus {
+    color: white;
+    fill: none;
+    
   }
 `;

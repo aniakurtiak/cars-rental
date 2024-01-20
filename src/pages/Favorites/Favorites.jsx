@@ -1,6 +1,6 @@
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavororiteItems } from '../../redux/selectors';
-import { useEffect } from 'react';
 import { fetchFavorites } from '../../redux/adverts/operations';
 import { CarsList } from 'components/CarsList/CarsList';
 
@@ -14,7 +14,7 @@ const Favorites = () => {
 
   return (
     <div>
-      <CarsList adverts={adverts} />
+      <CarsList adverts={adverts} deleteMode />
     </div>
   );
 };

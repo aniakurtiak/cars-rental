@@ -1,48 +1,36 @@
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Heart, HeartBtn, Img, Item, List } from './CarsList.styled';
+import { Heart, HeartBtn, HeartBtnDel, HeartDel, Img, Item, List } from './CarsList.styled';
 import { addFavorites, deleteFavorites } from '../../redux/adverts/operations';
 
-export const CarsList = ({ adverts }) => {
+export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
   const dispatch = useDispatch();
 
-  
+  const [activeButtons, setActiveButtons] = useState({});
+
+  useEffect(() => {
+    const initialActiveButtons = {};
+    adverts.forEach(advert => {
+      initialActiveButtons[advert.car_id] = favoriteMode ? 'favorite' : deleteMode ? 'delete' : 'favorite';
+    });
+    setActiveButtons(initialActiveButtons);
+  }, [adverts, favoriteMode, deleteMode]);
+
   const handleFavoriteClick = advert => {
-    console.log('Before dispatching addFavorites:', advert.id);
     dispatch(addFavorites(advert));
-    console.log('After dispatching addFavorites');
+    setActiveButtons(prevState => ({ ...prevState, [advert.car_id]: 'delete' }));
   };
 
-// const handleFavoriteClick = async advert => {
-//     try {
-//       const response = await dispatch(addFavorites(advert));
-//       // Здійсніть виклик функції onFavoriteUpdate з оновленим id
-//       onFavoriteUpdate(advert.id, response.payload.id);
-//     } catch (error) {
-//       console.error('Error adding to favorites:', error);
-//     }
-//   };
- 
-
-  const handleDeleteFavorite= advert => {
+  const handleDeleteFavorite = advert => {
     dispatch(deleteFavorites(advert.id));
+    setActiveButtons(prevState => ({ ...prevState, [advert.car_id]: 'favorite' }));
   };
-
-// const handleFavoriteClick = advert => {
-//     const isFavorite = adverts.some(item => item.id === advert.id);
-  
-//     if (isFavorite) {
-//       dispatch(deleteFavorites(advert.id));
-//     } else {
-//       dispatch(addFavorites(advert));
-//     }
-//   };
-  
 
   return (
     <div>
       <List>
         {adverts.map(advert => (
-          <Item key={advert.id}>
+          <Item key={advert.car_id}>
             <div>
               <Img src={advert.img} alt="car" />
             </div>
@@ -57,12 +45,18 @@ export const CarsList = ({ adverts }) => {
               {advert.rentalCompany}
               {advert.type}
               {advert.model}
-              {advert.id}
+              {advert.car_id}
             </div>
-            <HeartBtn onClick={() => handleFavoriteClick(advert)}>
-              <Heart />
-            </HeartBtn>
-            <button onClick={() => handleDeleteFavorite(advert)}>Delete </button>
+            {activeButtons[advert.car_id] === 'favorite' && (
+              <HeartBtn onClick={() => handleFavoriteClick(advert)}>
+                <Heart />
+              </HeartBtn>
+            )}
+            {activeButtons[advert.car_id] === 'delete' && (
+              <HeartBtnDel onClick={() => handleDeleteFavorite(advert)}>
+                <HeartDel />
+              </HeartBtnDel>
+            )}
           </Item>
         ))}
       </List>
