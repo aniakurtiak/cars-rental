@@ -34,10 +34,7 @@ export const advertsSlice = createSlice({
         item => item.id !== action.payload
       );
     },
-    setInitialLoad: (state, action) => {
-      state.isInitialLoad = action.payload;
-    },
-    
+        
   },
   extraReducers: builder => {
     builder

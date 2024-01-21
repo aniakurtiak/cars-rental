@@ -7,19 +7,6 @@ margin-left: 180px;
 display: flex;
 flex-direction: column;
 `
-
-// export const StyledForm = styled(Form)`
-//   margin-top: ${theme.spacing(25)};
-//   margin-bottom: ${theme.spacing(25)};
-//   display: flex;
-//   justify-content: center;
-//   align-items: end;
-//   &:first-child {
-//     width: 220px;
-//   }
-// `;
-
-
 export const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;

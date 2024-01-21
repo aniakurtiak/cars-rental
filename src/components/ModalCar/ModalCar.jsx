@@ -61,10 +61,6 @@ export const ModalCar = ({ onClose, advertId }) => {
       window.location.href = 'tel:+380730000000';
     }
 
-
-    // if (isLoading) {
-    //     return <div>Loading...</div>;
-    //   }
   return (
     <Backdrop ref={backdropRef}>
       <Modal>
