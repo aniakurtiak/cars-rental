@@ -38,8 +38,6 @@ export const CarsList = ({ adverts }) => {
 
   const addFavorite = advert => {
     const currentId = advert.id;
-    console.log(currentId);
-
     const index = favorites.findIndex(item => item.id === currentId);
     if (index !== -1) {
       dispatch(deleteFavorites(currentId));
