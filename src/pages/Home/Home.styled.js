@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
 min-height: 900px; 
 background-image: url(${require('../../img/70.jpg')});
-  background-size: cover; /* розтягне фон так, щоб він вкривав всю сторінку */
-  background-position: center; /* центрує зображення */
+  background-size: cover; 
+  background-position: center;
   background-repeat: no-repeat;
 `;
 
