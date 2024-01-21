@@ -15,10 +15,7 @@ margin-top: 50px;
   align-items: center;
 `;
 
-export const InfoItem = styled.li`
-  color: rgba(18, 20, 23, 0.5);
-  margin-left: 0;
-  `;
+
 
 export const Img = styled.img`
   width: 100%;
@@ -111,12 +108,18 @@ color: #3470FF;
 white-space: pre;
 `
 
-
 export const Info = styled.ul`
 display: flex;
   flex-wrap: wrap;
   padding-left: 0;
+  gap: 6px;
+  font-size: 12px;
 `;
+
+export const InfoItem = styled.li`
+  color: rgba(18, 20, 23, 0.5);
+  margin-left: 0;
+  `;
 
 export const Btn = styled.button`
   position: absolute;
