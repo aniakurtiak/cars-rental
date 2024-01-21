@@ -26,9 +26,6 @@ export const advertsSlice = createSlice({
     error: null,
   },
   reducers: {
-    setPage: (state, action) => {
-      state.page = action.payload;
-    },
     setLimit: (state, action) => {
       state.limit = action.payload;
     },
@@ -49,13 +46,16 @@ export const advertsSlice = createSlice({
       })
       .addCase(fetchAdverts.rejected, handleRejected)
 
+
       .addCase(loadMoreAdverts.pending, handlePending)
       .addCase(loadMoreAdverts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = [...state.items, ...action.payload];
+        state.page = state.page + 1;
       })
       .addCase(loadMoreAdverts.rejected, handleRejected)
+   
 
       .addCase(fetchAdvertbyId.pending, handlePending)
       .addCase(fetchAdvertbyId.fulfilled, (state, action) => {
@@ -64,6 +64,7 @@ export const advertsSlice = createSlice({
         state.itemById = action.payload;
       })
       .addCase(fetchAdvertbyId.rejected, handleRejected)
+
 
       .addCase(addFavoritesbyId.pending, (state, action) => {
         handlePending(state, action);
