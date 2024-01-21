@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-min-height: 1100px; 
+min-height: 900px; 
 background-image: url(${require('../../img/70.jpg')});
   background-size: cover; /* розтягне фон так, щоб він вкривав всю сторінку */
   background-position: center; /* центрує зображення */
