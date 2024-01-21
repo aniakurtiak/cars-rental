@@ -3,6 +3,7 @@ import { Filters } from 'components/Filters/Filters';
 import { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
 import { fetchAdverts } from '../../redux/adverts/operations';
+import { CatalogCotainer } from './Catalog.styled';
 // import { selectAdverts } from 'redux/selectors';
 
 const Catalog = () => {
@@ -16,10 +17,10 @@ const Catalog = () => {
 
 
   return (
-    <div>
+    <CatalogCotainer>
       <Filters />
       <Adverts />
-    </div>
+    </CatalogCotainer>
   );
 };
 

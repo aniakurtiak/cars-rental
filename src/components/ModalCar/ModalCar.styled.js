@@ -13,10 +13,9 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   position: relative;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 40px;
   width: 541px;
-  height: 752px;
+  min-height: 752px;
   border-radius: 10px;
   top: 50%;
   left: 50%;
@@ -65,11 +64,12 @@ line-height: 1.5;
 ` 
 
 export const Img = styled.img`
-width: 461px;
+width: 100%;
 height: 248px;
 border-radius: 14px;
 background: #F3F3F2;
 margin-bottom: 14px;
+
 `
 
 export const TitleInfo = styled.h2`
@@ -84,9 +84,13 @@ font-size: 14px;
 line-height: 1.42;
 margin: 0px;
 `
-export const AccessoriesTitle = styled.h3`
+export const Title = styled.h3`
 margin-top: 24px;
 margin-bottom: 4px;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.42;
 `
 export const List = styled.ul`
 display: flex;
@@ -96,4 +100,45 @@ gap: 6px;
 color: rgba(18, 20, 23, 0.50);
 font-size: 12px;
 line-height: 1.5;
+`;
+
+export const SomeInfoText = styled.p`
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.5;
+border-radius: 35px;
+background: #F9F9F9;
+margin: 0;
+padding: 7px 14px;
 `
+export const InfoContainer = styled.div`
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+margin-top: 4px;
+margin-bottom: 24px;
+`
+export const SomeValue = styled.span`
+color: #3470FF;
+font-weight: 600;
+`;
+
+export const RentulBtn = styled.button`
+padding: 12px 50px;
+justify-content: center;
+align-items: center;
+border-radius: 12px;
+background: #3470FF;
+color: white;
+font-size: 14px;
+font-weight: 600;
+line-height: 1.42;
+/* margin-top: 24px; */
+border: none;
+cursor: pointer;
+width: 168px;
+&:hover{
+  background: #0B44CD;
+  }
+`;

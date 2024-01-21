@@ -1,6 +1,14 @@
+import { Container, Text, TextContainer, Title } from "./Home.styled";
+
 const Home = () => {
     return (
-        <div>Home</div>
+        <Container>
+            <TextContainer>
+                <Title>Planning a trip?</Title>
+                <Text>Use our services and rent the car you want!</Text>
+                <Text>and go wherever you want!</Text>
+            </TextContainer>
+        </Container>
     )
 }
 

@@ -1,33 +1,37 @@
 import { useEffect, useRef } from 'react';
 import {
-  AccessoriesList,
-  AccessoriesTitle,
   Backdrop,
   ButtonClose,
   ButtonCloseIcon,
   Description,
   GenInfo,
   Img,
+  ImgContainer,
+  InfoContainer,
   List,
   Modal,
+  RentulBtn,
+  SomeInfoText,
+  SomeValue,
+  Title,
   TitleInfo,
 } from './ModalCar.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAdvertById } from '../../redux/selectors';
+import { selectAdvertById, selectIsLoading } from '../../redux/selectors';
 import { fetchAdvertbyId } from '../../redux/adverts/operations';
 import { Model } from 'components/CarsList/CarsList.styled';
 
 export const ModalCar = ({ onClose, advertId }) => {
   const backdropRef = useRef(null);
   const advertById = useSelector(selectAdvertById);
+  const isLoading = useSelector(selectIsLoading)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAdvertbyId(advertId));
   }, [dispatch, advertId]);
 
-  // console.log(advertById);
-
+  
   useEffect(() => {
     const handleClick = e => {
       if (e.target === backdropRef.current) {
@@ -55,21 +59,26 @@ export const ModalCar = ({ onClose, advertId }) => {
     };
   }, [onClose]);
 
+    const handleCall = () => {
+      window.location.href = 'tel:+380730000000';
+    }
+
+
+    // if (isLoading) {
+    //     // Покажіть лоадер або інший індікатор завантаження
+    //     return <div>Loading...</div>;
+    //   }
   return (
     <Backdrop ref={backdropRef}>
       <Modal>
-        <div>
           <Img src={advertById.img} alt="car" />
-        </div>
         <TitleInfo>
           {advertById.make} <Model> {advertById.model}</Model>,{' '}
           {advertById.year}
         </TitleInfo>
         <GenInfo>
           <div>
-            {advertById.address}
-            Id: {advertById.id}
-            Year: {advertById.year}
+            {advertById.address} Id: {advertById.id} Year: {advertById.year}{' '}
             Type: {advertById.type}
           </div>
           <div>
@@ -79,7 +88,7 @@ export const ModalCar = ({ onClose, advertId }) => {
         </GenInfo>
         <Description>{advertById.description}</Description>
         <div>
-          <AccessoriesTitle>Accessories and functionalities:</AccessoriesTitle>
+          <Title>Accessories and functionalities:</Title>
           <List>
             {advertById.accessories ? (
               advertById.accessories.map((accessory, index) => (
@@ -99,7 +108,25 @@ export const ModalCar = ({ onClose, advertId }) => {
             )}
           </List>
         </div>
-
+        <Title>Rental Conditions:</Title>
+        <InfoContainer>
+          {advertById.rentalConditions ? (
+            advertById.rentalConditions
+              .split('\n')
+              .map((condition, index) => (
+                <SomeInfoText key={index}>{condition}</SomeInfoText>
+              ))
+          ) : (
+            <li>No accessories available</li>
+          )}
+          <SomeInfoText>
+            Mileage: <SomeValue>{advertById.mileage}</SomeValue>
+          </SomeInfoText>
+          <SomeInfoText>
+            Price: <SomeValue>{advertById.rentalPrice}</SomeValue>
+          </SomeInfoText>
+        </InfoContainer>
+        <RentulBtn onClick={handleCall}>Rental car</RentulBtn>
         <ButtonClose type="button" onClick={onClose}>
           <ButtonCloseIcon />
         </ButtonClose>

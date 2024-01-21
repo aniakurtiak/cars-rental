@@ -1,5 +1,5 @@
 import {createSlice } from '@reduxjs/toolkit';
-import {addFavorites, deleteFavorites, fetchAdvertbyId, fetchAdverts, fetchFavorites } from './operations';
+import {addFavorites, deleteFavorites, fetchAdvertbyId, fetchAdverts, fetchFavorites, loadMoreAdverts } from './operations';
 
 
 const handlePending = state => {
@@ -18,6 +18,16 @@ export const advertsSlice = createSlice({
     isLoading: false,
     error: null,
     itemById: {},
+      page: 1,
+      limit: 12,
+  },
+  reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+    setLimit: (state, action) => {
+      state.limit = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -25,10 +35,23 @@ export const advertsSlice = createSlice({
       .addCase(fetchAdverts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items = action.payload
+      //   state.items = state.page === 1
+      //   ? action.payload.map(item => ({...item}))
+      //   : [...state.items, ...action.payload.slice(0, state.limit)]
       })
       .addCase(fetchAdverts.rejected, handleRejected)
+      .addCase(setLimit, (state, action) => {
+        state.limit = action.payload;
+      })
 
+      .addCase(loadMoreAdverts.pending, handlePending)
+      .addCase(loadMoreAdverts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = [...state.items, ...action.payload];
+      })
+      .addCase(loadMoreAdverts.rejected, handleRejected)
 
       .addCase(fetchAdvertbyId.pending, handlePending)
       .addCase(fetchAdvertbyId.fulfilled, (state, action) => {
@@ -73,4 +96,5 @@ export const advertsSlice = createSlice({
   },
 });
 
+export const { setPage, setLimit } = advertsSlice.actions;
 export const advertsReducer = advertsSlice.reducer;

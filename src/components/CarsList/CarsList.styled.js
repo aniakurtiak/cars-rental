@@ -1,13 +1,15 @@
 import { FiHeart } from 'react-icons/fi';
 import styled from 'styled-components';
 
+export const Cotnainer = styled.div`
+max-height: 426px;
+`
+
 export const List = styled.ul`
   display: flex;
   gap: 29px;
   flex-wrap: wrap;
 `;
-
-export const Container = styled.div``;
 
 export const Img = styled.img`
   width: 100%;
@@ -17,7 +19,7 @@ export const Img = styled.img`
 
 export const Item = styled.li`
   width: 274px;
-  height: 426px;
+  max-height: 426px;
   position: relative;
 `;
 
@@ -84,10 +86,12 @@ color: #121417;
 font-size: 16px;
 font-weight: 500;
 line-height: 1,5%;
+
 `
 
 export const MainInfo = styled.div`
 display: flex;
+
 `
 
 export const Price = styled.div`

@@ -19,3 +19,7 @@ export const selectVisibleItems = createSelector(
 })
 
 export const selectAdvertById = state => state.adverts.itemById;
+
+export const selectPage = state => state.adverts.page;
+
+export const selectLimit = state => state.adverts.limit

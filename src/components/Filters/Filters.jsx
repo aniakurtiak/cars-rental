@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedOption } from '../../redux/filters/filtersSlice';
 import { selectSelectedOption } from '../../redux/selectors';
 import Select from 'react-select';
+import { Container, StyledLabel, StyledSelect } from './Filters.styled';
 
 const options = [
   { value: 'buick', label: 'Buick' },
@@ -36,15 +37,16 @@ export const Filters = () => {
   };
 
   return (
-    <div>
-      <label>Car brand</label>
-      <Select
+    <Container>
+      <StyledLabel>Car brand</StyledLabel>
+      <StyledSelect
         value={options.find(option => option.value === selectedOption)}
         options={options}
         onChange={handleOptionChange}
         isSearchable
         placeholder="Enter the text"
+        classNamePrefix="react-select"
       />
-    </div>
+    </Container>
   );
 };

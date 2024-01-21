@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAdverts } from '../../redux/adverts/operations';
-import { selectVisibleItems } from '../../redux/selectors';
+import { fetchAdverts, loadMoreAdverts } from '../../redux/adverts/operations';
+import {selectVisibleItems } from '../../redux/selectors';
 import { CarsList } from 'components/CarsList/CarsList';
+import { Cotainer, LoadBtn } from './Adverts.styled';
 
 export const Adverts = () => {
   const dispatch = useDispatch();
@@ -12,9 +13,14 @@ export const Adverts = () => {
     dispatch(fetchAdverts());
   }, [dispatch]);
 
+  const handleLoadMore = () => {
+    dispatch(loadMoreAdverts());
+  };
+
   return (
-    <div>
+    <Cotainer>
       <CarsList adverts={adverts} favoriteMode />
-    </div>
+      <LoadBtn onClick={handleLoadMore}>Load more</LoadBtn>
+    </Cotainer>
   );
 };
