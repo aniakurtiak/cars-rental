@@ -10,13 +10,25 @@ export const selectError = state => state.adverts.error;
 
 export const selectSelectedOption = state => state.filters.selectedOption;
 
+// export const selectVisibleItems = createSelector(
+//     [selectAdverts, selectSelectedOption],
+//     (adverts, filters) => {
+//         return adverts.filter(advert => advert.make.toLowerCase()
+//             .includes(filters.toLowerCase())
+//   );
+// })
+
 export const selectVisibleItems = createSelector(
     [selectAdverts, selectSelectedOption],
     (adverts, filters) => {
-        return adverts.filter(advert => advert.make.toLowerCase()
-            .includes(filters.toLowerCase())
-  );
-})
+        if (filters === 'all') {
+            return adverts;  // Повертаємо весь список авто, якщо обрана опція "All car"
+        }
+
+        return adverts.filter(advert => advert.make.toLowerCase().includes(filters.toLowerCase()));
+    }
+);
+
 
 export const selectAdvertById = state => state.adverts.itemById;
 

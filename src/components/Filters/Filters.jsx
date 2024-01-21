@@ -4,6 +4,7 @@ import { selectSelectedOption } from '../../redux/selectors';
 import { Container, StyledLabel, StyledSelect } from './Filters.styled';
 
 const options = [
+  {value: 'all', label: 'All car'},
   { value: 'buick', label: 'Buick' },
   { value: 'volvo', label: 'Volvo' },
   { value: 'hummer', label: 'HUMMER' },
