@@ -8,7 +8,11 @@ import persistStore from 'redux-persist/es/persistStore';
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  blacklist: ['adverts'],
+  stateReconciler: (inboundState, originalState) => {
+    return { ...originalState, ...inboundState, page: originalState?.page || 1 };
+  },
 };
 
 
