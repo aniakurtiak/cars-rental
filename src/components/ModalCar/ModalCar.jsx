@@ -6,7 +6,6 @@ import {
   Description,
   GenInfo,
   Img,
-  ImgContainer,
   InfoContainer,
   List,
   Modal,
@@ -17,14 +16,13 @@ import {
   TitleInfo,
 } from './ModalCar.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAdvertById, selectIsLoading } from '../../redux/selectors';
+import { selectAdvertById } from '../../redux/selectors';
 import { fetchAdvertbyId } from '../../redux/adverts/operations';
 import { Model } from 'components/CarsList/CarsList.styled';
 
 export const ModalCar = ({ onClose, advertId }) => {
   const backdropRef = useRef(null);
   const advertById = useSelector(selectAdvertById);
-  const isLoading = useSelector(selectIsLoading)
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedOption } from '../../redux/filters/filtersSlice';
 import { selectSelectedOption } from '../../redux/selectors';
-import Select from 'react-select';
 import { Container, StyledLabel, StyledSelect } from './Filters.styled';
 
 const options = [
