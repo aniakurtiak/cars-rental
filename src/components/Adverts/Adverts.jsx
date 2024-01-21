@@ -20,7 +20,7 @@ export const Adverts = () => {
   return (
     <Cotainer>
       <div>
-        <CarsList adverts={adverts} favoriteMode />
+        <CarsList adverts={adverts}/>
         </div>
       <LoadBtn onClick={handleLoadMore}>Load more</LoadBtn>
     </Cotainer>

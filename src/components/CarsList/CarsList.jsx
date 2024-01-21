@@ -17,7 +17,7 @@ import {
 import { ModalCar } from 'components/ModalCar/ModalCar';
 import { deleteFavorites } from '../../redux/adverts/advertsSlice';
 import { addFavoritesbyId } from '../../redux/adverts/operations';
-import { selectFavoriteItems} from '../../redux/selectors';
+import { selectFavoriteItems } from '../../redux/selectors';
 
 export const CarsList = ({ adverts }) => {
   const dispatch = useDispatch();
@@ -38,14 +38,13 @@ export const CarsList = ({ adverts }) => {
   const addFavorite = advert => {
     const currentId = advert.id;
     console.log(currentId);
-    
-   
-      const index = favorites.findIndex(item => item.id === currentId);
-      if (index !== -1) {
-        dispatch(deleteFavorites(currentId));
-      } else {
-        dispatch(addFavoritesbyId(currentId));
-      }
+
+    const index = favorites.findIndex(item => item.id === currentId);
+    if (index !== -1) {
+      dispatch(deleteFavorites(currentId));
+    } else {
+      dispatch(addFavoritesbyId(currentId));
+    }
   };
 
   return (
@@ -71,11 +70,11 @@ export const CarsList = ({ adverts }) => {
               {advert.accessories.slice(0, 1)}
             </Info>
             <HeartBtn type="button" onClick={() => addFavorite(advert)}>
-              {adverts.some(item => item.id === advert.id) ? (
-                <Heart />
-              ) : (
+              {favorites.some(item => item.id === advert.id) ? 
                 <HeartDel />
-              )}
+                : 
+                <Heart />
+              }
             </HeartBtn>
             <Btn onClick={() => openModal(advert)}>Learn more</Btn>
           </Item>

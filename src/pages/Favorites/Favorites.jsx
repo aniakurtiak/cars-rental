@@ -14,7 +14,7 @@ const Favorites = () => {
 
   return (
     <div>
-      <CarsList adverts={adverts} deleteMode />
+      <CarsList adverts={adverts} />
     </div>
   );
 };
