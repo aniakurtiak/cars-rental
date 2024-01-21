@@ -4,11 +4,13 @@ import { filtersReducer } from './filters/filtersSlice';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
+import persistStore from 'redux-persist/es/persistStore';
 
 const persistConfig = {
-  key: 'root',
+  key: 'adverts',
   storage
 };
+
 
 export const store = configureStore({
   reducer: {
@@ -24,3 +26,5 @@ export const store = configureStore({
     return customMiddlewares;
   },
 });
+
+export const persistor = persistStore(store);

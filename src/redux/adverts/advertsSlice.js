@@ -23,7 +23,7 @@ export const advertsSlice = createSlice({
     page: 1,
     limit: 12,
     isLoading: false,
-    error: null,
+    error: null, 
   },
   reducers: {
     setLimit: (state, action) => {
@@ -33,6 +33,9 @@ export const advertsSlice = createSlice({
       state.favoriteItems = state.favoriteItems.filter(
         item => item.id !== action.payload
       );
+    },
+    setInitialLoad: (state, action) => {
+      state.isInitialLoad = action.payload;
     },
     
   },
@@ -81,5 +84,5 @@ export const advertsSlice = createSlice({
 });
 
 export const { deleteFavorites } = advertsSlice.actions;
-export const { setPage, setLimit } = advertsSlice.actions;
+export const { setLimit } = advertsSlice.actions;
 export const advertsReducer = advertsSlice.reducer;

@@ -24,7 +24,7 @@ align-items: center;
 `;
 
 export const NLink = styled(NavLink)`
-font-size: 25px;
+font-size: 20px;
 font-weight: 700;
 color: white;
 transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
