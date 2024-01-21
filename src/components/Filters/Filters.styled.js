@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 margin-top: 50px;
-margin-bottom: 50px;
 margin-left: 180px;
+display: flex;
+flex-direction: column;
 `
 
 // export const StyledForm = styled(Form)`
@@ -17,6 +18,7 @@ margin-left: 180px;
 //     width: 220px;
 //   }
 // `;
+
 
 export const StyledLabel = styled.label`
   display: flex;

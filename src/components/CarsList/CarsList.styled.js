@@ -6,10 +6,19 @@ max-height: 426px;
 `
 
 export const List = styled.ul`
+margin-top: 50px;
   display: flex;
   gap: 29px;
   flex-wrap: wrap;
+  padding-left: 0;
+  justify-content: center;
+  align-items: center;
 `;
+
+export const InfoItem = styled.li`
+  color: rgba(18, 20, 23, 0.5);
+  margin-left: 0;
+  `;
 
 export const Img = styled.img`
   width: 100%;
@@ -19,7 +28,7 @@ export const Img = styled.img`
 
 export const Item = styled.li`
   width: 274px;
-  max-height: 426px;
+  min-height: 426px;
   position: relative;
 `;
 
@@ -102,26 +111,30 @@ color: #3470FF;
 white-space: pre;
 `
 
-export const Info = styled.div`
+
+export const Info = styled.ul`
 display: flex;
-justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 0;
 `;
 
 export const Btn = styled.button`
-margin-top: 28px;
-width: 100%;
-height: 44px;
-padding: 12px 99px;
-justify-content: center;
-align-items: center;
-border: none;
-border-radius: 12px;
-background: #3470FF;
-color: white;
-font-weight: 600;
-line-height: 1.43;
-cursor: pointer;
-&:hover{
-  background: #0B44CD;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  padding: 12px 99px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 12px;
+  background: #3470FF;
+  color: white;
+  font-weight: 600;
+  line-height: 1.43;
+  cursor: pointer;
+  &:hover {
+    background: #0B44CD;
   }
-`
+`;

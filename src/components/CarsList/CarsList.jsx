@@ -13,6 +13,7 @@ import {
   Model,
   Price,
   TitleContainer,
+  InfoItem,
 } from './CarsList.styled';
 import { ModalCar } from 'components/ModalCar/ModalCar';
 import { deleteFavorites } from '../../redux/adverts/advertsSlice';
@@ -48,7 +49,6 @@ export const CarsList = ({ adverts }) => {
   };
 
   return (
-    <div>
       <List>
         {adverts.map(advert => (
           <Item key={advert.id} id={advert.id}>
@@ -62,19 +62,20 @@ export const CarsList = ({ adverts }) => {
               <Price>{advert.rentalPrice}</Price>
             </TitleContainer>
             <Info>
-              {advert.address}
-              {advert.rentalCompany}
-              {advert.type}
-              {advert.model}
-              {advert.id}
-              {advert.accessories.slice(0, 1)}
+              <InfoItem>{advert.address.slice(19)}</InfoItem>
+              <InfoItem>{advert.rentalCompany}</InfoItem>
+              <InfoItem>Premium</InfoItem>
+              <InfoItem>{advert.type}</InfoItem>
+              <InfoItem>{advert.model}</InfoItem>
+              <InfoItem>{advert.id}</InfoItem>
+              <InfoItem>{advert.accessories.slice(0, 1)}</InfoItem>
             </Info>
             <HeartBtn type="button" onClick={() => addFavorite(advert)}>
-              {favorites.some(item => item.id === advert.id) ? 
+              {favorites.some(item => item.id === advert.id) ? (
                 <HeartDel />
-                : 
+              ) : (
                 <Heart />
-              }
+              )}
             </HeartBtn>
             <Btn onClick={() => openModal(advert)}>Learn more</Btn>
           </Item>
@@ -87,6 +88,5 @@ export const CarsList = ({ adverts }) => {
           />
         )}
       </List>
-    </div>
   );
 };

@@ -24,7 +24,8 @@ align-items: center;
 `;
 
 export const NLink = styled(NavLink)`
-font-size: 20px;
+font-size: 25px;
+font-weight: 700;
 color: white;
 transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
 &:hover {
@@ -40,7 +41,7 @@ export const NavCotainer = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-gap: 50px;
+gap: 100px;
 height: 40px;
 width: 300px;
 
