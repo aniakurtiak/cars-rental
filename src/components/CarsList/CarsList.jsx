@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Btn,
   Heart,
   HeartBtn,
-  HeartBtnDel,
   HeartDel,
   Img,
   Info,
@@ -15,42 +14,16 @@ import {
   Price,
   TitleContainer,
 } from './CarsList.styled';
-import { addFavorites, deleteFavorites } from '../../redux/adverts/operations';
 import { ModalCar } from 'components/ModalCar/ModalCar';
+import { deleteFavorites } from '../../redux/adverts/advertsSlice';
+import { addFavoritesbyId } from '../../redux/adverts/operations';
+import { selectFavoriteItems} from '../../redux/selectors';
 
-export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
+export const CarsList = ({ adverts }) => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
-  const [activeButtons, setActiveButtons] = useState({});
   const [selectedCar, setSelectedCar] = useState(null);
-
-  useEffect(() => {
-    const initialActiveButtons = {};
-    adverts.forEach(advert => {
-      initialActiveButtons[advert.id] = favoriteMode
-        ? 'favorite'
-        : deleteMode
-        ? 'delete'
-        : 'favorite';
-    });
-    setActiveButtons(initialActiveButtons);
-  }, [adverts, favoriteMode, deleteMode]);
-
-  const handleFavoriteClick = advert => {
-    dispatch(addFavorites(advert));
-    setActiveButtons(prevState => ({
-      ...prevState,
-      [advert.id]: 'delete',
-    }));
-  };
-
-  const handleDeleteFavorite = advert => {
-    dispatch(deleteFavorites(advert.id));
-    setActiveButtons(prevState => ({
-      ...prevState,
-      [advert.id]: 'favorite',
-    }));
-  };
+  const favorites = useSelector(selectFavoriteItems);
 
   const openModal = car => {
     setSelectedCar(car);
@@ -62,43 +35,58 @@ export const CarsList = ({ adverts, favoriteMode, deleteMode }) => {
     setModal(false);
   };
 
+  const addFavorite = advert => {
+    const currentId = advert.id;
+    console.log(currentId);
+    
+   
+      const index = favorites.findIndex(item => item.id === currentId);
+      if (index !== -1) {
+        dispatch(deleteFavorites(currentId));
+      } else {
+        dispatch(addFavoritesbyId(currentId));
+      }
+  };
+
   return (
     <div>
       <List>
         {adverts.map(advert => (
-          <Item key={advert.id}>
+          <Item key={advert.id} id={advert.id}>
             <div>
-              <Img src={advert.img} alt="car" />
+              <Img src={advert.img} loading="lazy" alt="car" />
             </div>
             <TitleContainer>
               <MainInfo>
-                {advert.make} {' '}
-               <Model> {advert.model}</Model>, {' '} 
-                {advert.year} 
+                {advert.make} <Model> {advert.model}</Model>, {advert.year}
               </MainInfo>
               <Price>{advert.rentalPrice}</Price>
             </TitleContainer>
             <Info>
-            {advert.address} 
-            {advert.rentalCompany}
-            {advert.type}
-            {advert.model}
-            {advert.id}
+              {advert.address}
+              {advert.rentalCompany}
+              {advert.type}
+              {advert.model}
+              {advert.id}
+              {advert.accessories.slice(0, 1)}
             </Info>
-            {activeButtons[advert.id] === 'favorite' && (
-              <HeartBtn onClick={() => handleFavoriteClick(advert)}>
+            <HeartBtn type="button" onClick={() => addFavorite(advert)}>
+              {adverts.some(item => item.id === advert.id) ? (
                 <Heart />
-              </HeartBtn>
-            )}
-            {activeButtons[advert.id] === 'delete' && (
-              <HeartBtnDel onClick={() => handleDeleteFavorite(advert)}>
+              ) : (
                 <HeartDel />
-              </HeartBtnDel>
-            )}
+              )}
+            </HeartBtn>
             <Btn onClick={() => openModal(advert)}>Learn more</Btn>
           </Item>
         ))}
-      {modal && <ModalCar car={selectedCar} onClose={closeModal} advertId={selectedCar.id}/>}
+        {modal && (
+          <ModalCar
+            car={selectedCar}
+            onClose={closeModal}
+            advertId={selectedCar.id}
+          />
+        )}
       </List>
     </div>
   );

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFavororiteItems } from '../../redux/selectors';
-import { fetchFavorites } from '../../redux/adverts/operations';
+import { selectFavoriteItems } from '../../redux/selectors';
+import { addFavoritesbyId} from '../../redux/adverts/operations';
 import { CarsList } from 'components/CarsList/CarsList';
 
 const Favorites = () => {
   const dispatch = useDispatch();
-  const adverts = useSelector(selectFavororiteItems);
+  const adverts = useSelector(selectFavoriteItems);
 
   useEffect(() => {
-    dispatch(fetchFavorites());
+    dispatch(addFavoritesbyId());
   }, [dispatch]);
 
   return (

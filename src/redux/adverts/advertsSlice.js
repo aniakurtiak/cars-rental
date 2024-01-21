@@ -1,6 +1,10 @@
-import {createSlice } from '@reduxjs/toolkit';
-import {addFavorites, deleteFavorites, fetchAdvertbyId, fetchAdverts, fetchFavorites, loadMoreAdverts } from './operations';
-
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  addFavoritesbyId,
+  fetchAdvertbyId,
+  fetchAdverts,
+  loadMoreAdverts,
+} from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -14,12 +18,12 @@ export const advertsSlice = createSlice({
   name: 'adverts',
   initialState: {
     items: [],
-    favororiteItems: [],
+    favoriteItems: [],
+    itemById: {},
+    page: 1,
+    limit: 12,
     isLoading: false,
     error: null,
-    itemById: {},
-      page: 1,
-      limit: 12,
   },
   reducers: {
     setPage: (state, action) => {
@@ -28,6 +32,12 @@ export const advertsSlice = createSlice({
     setLimit: (state, action) => {
       state.limit = action.payload;
     },
+    deleteFavorites(state, action) {
+      state.favoriteItems = state.favoriteItems.filter(
+        item => item.id !== action.payload
+      );
+    },
+    
   },
   extraReducers: builder => {
     builder
@@ -35,15 +45,9 @@ export const advertsSlice = createSlice({
       .addCase(fetchAdverts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload
-      //   state.items = state.page === 1
-      //   ? action.payload.map(item => ({...item}))
-      //   : [...state.items, ...action.payload.slice(0, state.limit)]
+        state.items = action.payload;
       })
       .addCase(fetchAdverts.rejected, handleRejected)
-      .addCase(setLimit, (state, action) => {
-        state.limit = action.payload;
-      })
 
       .addCase(loadMoreAdverts.pending, handlePending)
       .addCase(loadMoreAdverts.fulfilled, (state, action) => {
@@ -61,40 +65,20 @@ export const advertsSlice = createSlice({
       })
       .addCase(fetchAdvertbyId.rejected, handleRejected)
 
-
-      .addCase(addFavorites.pending, handlePending)
-      .addCase(addFavorites.fulfilled, (state, action) => {
+      .addCase(addFavoritesbyId.pending, (state, action) => {
+        handlePending(state, action);
+      })
+      .addCase(addFavoritesbyId.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.favororiteItems.push(action.payload);
+        state.favoriteItems = [...state.favoriteItems, action.payload];
       })
-      .addCase(addFavorites.rejected, handleRejected)
-
-
-      .addCase(fetchFavorites.pending, handlePending)
-      .addCase(fetchFavorites.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.favororiteItems = action.payload;
-      })
-      .addCase(fetchFavorites.rejected, handleRejected)
-
-
-      .addCase(deleteFavorites.pending, handlePending)
-      .addCase(deleteFavorites.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const { advertId } = action.payload;
-      
-        const index = state.favororiteItems.findIndex(
-          advert => advert.id === advertId
-        );
-        if (index !== -1) {
-          state.favororiteItems.splice(index, 1);
-        }
-      })
+      .addCase(addFavoritesbyId.rejected, (state, action) => {
+        handleRejected(state, action);
+      });
   },
 });
 
+export const { deleteFavorites } = advertsSlice.actions;
 export const { setPage, setLimit } = advertsSlice.actions;
 export const advertsReducer = advertsSlice.reducer;

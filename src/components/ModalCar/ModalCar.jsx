@@ -63,7 +63,6 @@ export const ModalCar = ({ onClose, advertId }) => {
 
 
     // if (isLoading) {
-    //     // Покажіть лоадер або інший індікатор завантаження
     //     return <div>Loading...</div>;
     //   }
   return (
