@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/cars-rental/static/css/main.b10197bb.css",
-    "main.js": "/cars-rental/static/js/main.e4a2f2fd.js",
+    "main.js": "/cars-rental/static/js/main.83cb3158.js",
     "static/js/304.98b1ddbb.chunk.js": "/cars-rental/static/js/304.98b1ddbb.chunk.js",
-    "static/js/951.228cf05f.chunk.js": "/cars-rental/static/js/951.228cf05f.chunk.js",
-    "static/js/702.70284106.chunk.js": "/cars-rental/static/js/702.70284106.chunk.js",
+    "static/js/951.78978821.chunk.js": "/cars-rental/static/js/951.78978821.chunk.js",
+    "static/js/702.8d6fc59c.chunk.js": "/cars-rental/static/js/702.8d6fc59c.chunk.js",
     "static/js/242.cddbd9d1.chunk.js": "/cars-rental/static/js/242.cddbd9d1.chunk.js",
     "static/js/864.e8567426.chunk.js": "/cars-rental/static/js/864.e8567426.chunk.js",
     "static/media/70.jpg": "/cars-rental/static/media/70.23234b85c56abe6cd2fc.jpg",
     "static/media/Schermafbeelding-2023-01-23-om-16.53.17.png": "/cars-rental/static/media/Schermafbeelding-2023-01-23-om-16.53.17.115a1ac146382c387487.png",
     "index.html": "/cars-rental/index.html",
     "main.b10197bb.css.map": "/cars-rental/static/css/main.b10197bb.css.map",
-    "main.e4a2f2fd.js.map": "/cars-rental/static/js/main.e4a2f2fd.js.map",
+    "main.83cb3158.js.map": "/cars-rental/static/js/main.83cb3158.js.map",
     "304.98b1ddbb.chunk.js.map": "/cars-rental/static/js/304.98b1ddbb.chunk.js.map",
-    "951.228cf05f.chunk.js.map": "/cars-rental/static/js/951.228cf05f.chunk.js.map",
-    "702.70284106.chunk.js.map": "/cars-rental/static/js/702.70284106.chunk.js.map",
+    "951.78978821.chunk.js.map": "/cars-rental/static/js/951.78978821.chunk.js.map",
+    "702.8d6fc59c.chunk.js.map": "/cars-rental/static/js/702.8d6fc59c.chunk.js.map",
     "242.cddbd9d1.chunk.js.map": "/cars-rental/static/js/242.cddbd9d1.chunk.js.map",
     "864.e8567426.chunk.js.map": "/cars-rental/static/js/864.e8567426.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b10197bb.css",
-    "static/js/main.e4a2f2fd.js"
+    "static/js/main.83cb3158.js"
   ]
 }
