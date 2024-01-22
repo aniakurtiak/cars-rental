@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/cars-rental/static/css/main.b10197bb.css",
-    "main.js": "/cars-rental/static/js/main.f54a5fec.js",
+    "main.js": "/cars-rental/static/js/main.e4a2f2fd.js",
     "static/js/304.98b1ddbb.chunk.js": "/cars-rental/static/js/304.98b1ddbb.chunk.js",
-    "static/js/951.e2144426.chunk.js": "/cars-rental/static/js/951.e2144426.chunk.js",
-    "static/js/702.060a8deb.chunk.js": "/cars-rental/static/js/702.060a8deb.chunk.js",
+    "static/js/951.228cf05f.chunk.js": "/cars-rental/static/js/951.228cf05f.chunk.js",
+    "static/js/702.70284106.chunk.js": "/cars-rental/static/js/702.70284106.chunk.js",
     "static/js/242.cddbd9d1.chunk.js": "/cars-rental/static/js/242.cddbd9d1.chunk.js",
     "static/js/864.e8567426.chunk.js": "/cars-rental/static/js/864.e8567426.chunk.js",
     "static/media/70.jpg": "/cars-rental/static/media/70.23234b85c56abe6cd2fc.jpg",
     "static/media/Schermafbeelding-2023-01-23-om-16.53.17.png": "/cars-rental/static/media/Schermafbeelding-2023-01-23-om-16.53.17.115a1ac146382c387487.png",
     "index.html": "/cars-rental/index.html",
     "main.b10197bb.css.map": "/cars-rental/static/css/main.b10197bb.css.map",
-    "main.f54a5fec.js.map": "/cars-rental/static/js/main.f54a5fec.js.map",
+    "main.e4a2f2fd.js.map": "/cars-rental/static/js/main.e4a2f2fd.js.map",
     "304.98b1ddbb.chunk.js.map": "/cars-rental/static/js/304.98b1ddbb.chunk.js.map",
-    "951.e2144426.chunk.js.map": "/cars-rental/static/js/951.e2144426.chunk.js.map",
-    "702.060a8deb.chunk.js.map": "/cars-rental/static/js/702.060a8deb.chunk.js.map",
+    "951.228cf05f.chunk.js.map": "/cars-rental/static/js/951.228cf05f.chunk.js.map",
+    "702.70284106.chunk.js.map": "/cars-rental/static/js/702.70284106.chunk.js.map",
     "242.cddbd9d1.chunk.js.map": "/cars-rental/static/js/242.cddbd9d1.chunk.js.map",
     "864.e8567426.chunk.js.map": "/cars-rental/static/js/864.e8567426.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b10197bb.css",
-    "static/js/main.f54a5fec.js"
+    "static/js/main.e4a2f2fd.js"
   ]
 }
