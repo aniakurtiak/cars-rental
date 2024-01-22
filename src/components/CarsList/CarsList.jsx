@@ -60,13 +60,14 @@ export const CarsList = ({ adverts }) => {
               <Price>{advert.rentalPrice}</Price>
             </TitleContainer>
             <Info>
-              <InfoItem>{advert.address.slice(19)}</InfoItem>
+              <InfoItem>{advert.address.slice(0, -9)}</InfoItem>
+              <InfoItem>{advert.address.slice(-7)}</InfoItem>
               <InfoItem>{advert.rentalCompany}</InfoItem>
               <InfoItem>Premium</InfoItem>
               <InfoItem>{advert.type}</InfoItem>
               <InfoItem>{advert.model}</InfoItem>
               <InfoItem>{advert.id}</InfoItem>
-              <InfoItem>{advert.accessories.slice(0, 1)}</InfoItem>
+              <InfoItem>{advert.functionalities.slice(0, 1)}</InfoItem>
             </Info>
             <HeartBtn type="button" onClick={() => addFavorite(advert)}>
               {favorites.some(item => item.id === advert.id) ? (

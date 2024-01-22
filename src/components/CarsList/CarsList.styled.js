@@ -119,7 +119,13 @@ display: flex;
 export const InfoItem = styled.li`
   color: rgba(18, 20, 23, 0.5);
   margin-left: 0;
-  `;
+  padding-right: 6px; /* Забезпечте простір для відступу від кінця елемента */
+  border-right: 1px solid rgba(18, 20, 23, 0.10);
+
+  &:last-child {
+    border-right: none; /* Видаляємо праву границю для останнього елемента */
+  }
+`;
 
 export const Btn = styled.button`
   position: absolute;
