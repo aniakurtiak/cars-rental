@@ -60,6 +60,8 @@ export const ModalCar = ({ onClose, advertId }) => {
     window.location.href = 'tel:+380730000000';
   };
 
+  const rentalConditionsArray = advertById.rentalConditions.split('\n');
+
   return (
     <Backdrop ref={backdropRef}>
       <Modal>
@@ -106,11 +108,20 @@ export const ModalCar = ({ onClose, advertId }) => {
         <Title>Rental Conditions:</Title>
         <InfoContainer>
           {advertById.rentalConditions ? (
-            advertById.rentalConditions
-              .split('\n')
-              .map((condition, index) => (
-                <SomeInfoText key={index}>{condition}</SomeInfoText>
-              ))
+            rentalConditionsArray.slice(0, 1).map((condition, index) => (
+              <SomeInfoText key={index} className="first-condition">
+                {condition.slice(0, -2)} <SomeValue>{condition.slice(-2)}</SomeValue>
+              </SomeInfoText>
+            ))
+          ) : (
+            <li>No accessories available</li>
+          )}
+             {advertById.rentalConditions ? (
+             rentalConditionsArray.slice(1).map((condition, index) => (
+              <SomeInfoText key={index}>
+                {condition} 
+              </SomeInfoText>
+            ))
           ) : (
             <li>No accessories available</li>
           )}
