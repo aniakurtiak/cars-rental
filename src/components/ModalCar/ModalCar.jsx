@@ -18,7 +18,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAdvertById } from '../../redux/selectors';
 import { fetchAdvertbyId } from '../../redux/adverts/operations';
-import { Model } from 'components/CarsList/CarsList.styled';
+import { Info, InfoItem, Model } from 'components/CarsList/CarsList.styled';
 
 export const ModalCar = ({ onClose, advertId }) => {
   const backdropRef = useRef(null);
@@ -29,7 +29,6 @@ export const ModalCar = ({ onClose, advertId }) => {
     dispatch(fetchAdvertbyId(advertId));
   }, [dispatch, advertId]);
 
-  
   useEffect(() => {
     const handleClick = e => {
       if (e.target === backdropRef.current) {
@@ -57,27 +56,30 @@ export const ModalCar = ({ onClose, advertId }) => {
     };
   }, [onClose]);
 
-    const handleCall = () => {
-      window.location.href = 'tel:+380730000000';
-    }
+  const handleCall = () => {
+    window.location.href = 'tel:+380730000000';
+  };
 
   return (
     <Backdrop ref={backdropRef}>
       <Modal>
-          <Img src={advertById.img} alt="car" />
+        <Img src={advertById.img} alt="car" />
         <TitleInfo>
           {advertById.make} <Model> {advertById.model}</Model>,{' '}
           {advertById.year}
         </TitleInfo>
         <GenInfo>
-          <div>
-            {advertById.address} Id: {advertById.id} Year: {advertById.year}{' '}
-            Type: {advertById.type}
-          </div>
-          <div>
-            Fuel Consumption: {advertById.fuelConsumption}
-            Engine Size: {advertById.engineSize}
-          </div>
+          <Info>
+            <InfoItem>{advertById.address.slice(0, -9)}</InfoItem>
+            <InfoItem>{advertById.address.slice(-7)}</InfoItem>
+            <InfoItem> Id: {advertById.id} </InfoItem>
+            <InfoItem> Year: {advertById.year} </InfoItem>
+            <InfoItem>Type: {advertById.type}</InfoItem>
+          </Info>
+          <Info>
+            <InfoItem>Fuel Consumption: {advertById.fuelConsumption}</InfoItem>
+            <InfoItem> Engine Size: {advertById.engineSize}</InfoItem>
+          </Info>
         </GenInfo>
         <Description>{advertById.description}</Description>
         <div>
