@@ -7,18 +7,18 @@ import {
   GenInfo,
   Img,
   InfoContainer,
-  List,
   Modal,
   RentulBtn,
   SomeInfoText,
   SomeValue,
   Title,
   TitleInfo,
+  Info
 } from './ModalCar.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAdvertById } from '../../redux/selectors';
 import { fetchAdvertbyId } from '../../redux/adverts/operations';
-import { Info, InfoItem, Model } from 'components/CarsList/CarsList.styled';
+import { InfoItem, Model } from 'components/CarsList/CarsList.styled';
 
 export const ModalCar = ({ onClose, advertId }) => {
   const backdropRef = useRef(null);
@@ -84,24 +84,24 @@ export const ModalCar = ({ onClose, advertId }) => {
         <Description>{advertById.description}</Description>
         <div>
           <Title>Accessories and functionalities:</Title>
-          <List>
+          <Info>
             {advertById.accessories ? (
               advertById.accessories.map((accessory, index) => (
-                <li key={index}>{accessory}</li>
+                <InfoItem key={index}>{accessory}</InfoItem>
               ))
             ) : (
               <li>No accessories available</li>
             )}
-          </List>
-          <List>
+          </Info>
+          <Info>
             {advertById.functionalities ? (
               advertById.functionalities.map((functionality, index) => (
-                <li key={index}>{functionality}</li>
+                <InfoItem key={index}>{functionality}</InfoItem>
               ))
             ) : (
               <li>No accessories available</li>
             )}
-          </List>
+          </Info>
         </div>
         <Title>Rental Conditions:</Title>
         <InfoContainer>

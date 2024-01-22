@@ -86,12 +86,22 @@ margin: 0px;
 `
 export const Title = styled.h3`
 margin-top: 24px;
-margin-bottom: 4px;
+margin-bottom: 8px;
 font-size: 14px;
 font-style: normal;
 font-weight: 500;
 line-height: 1.42;
 `
+export const Info = styled.ul`
+display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+  padding-left: 0;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+`;
+
 export const List = styled.ul`
 display: flex;
 padding-left: 0px;
