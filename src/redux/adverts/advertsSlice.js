@@ -26,9 +26,6 @@ export const advertsSlice = createSlice({
     error: null, 
   },
   reducers: {
-    setLimit: (state, action) => {
-      state.limit = action.payload;
-    },
     deleteFavorites(state, action) {
       state.favoriteItems = state.favoriteItems.filter(
         item => item.id !== action.payload

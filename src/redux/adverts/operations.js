@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'https://65a6efd494c2c5762da61054.mockapi.io/api/';
 
 export const fetchAdverts = createAsyncThunk(
   'adverts/fetchAll',
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
       const { page, limit } = thunkAPI.getState().adverts;
       const response = await axios.get('/adverts', {
@@ -22,6 +22,21 @@ export const fetchAdverts = createAsyncThunk(
     }
   }
 );
+
+export const fetcherAllCars = createAsyncThunk(
+  '/cars',
+  async (page, thunkAPI) => {
+    try {
+      const response = await axios.get(`/cars?page=${page}&limit=12`);
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+
 
 export const fetchAdvertbyId = createAsyncThunk(
   "adverts/fetchAdvertbyId",
